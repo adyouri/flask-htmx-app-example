@@ -1,0 +1,11 @@
+<ul>
+    {% for movie in movies %}
+        <li>
+            <span style="text-decoration: {{ 'line-through' if movie.watched else 'none' }}">{{ movie.title }}</span>
+            <button hx-post="/toggle/{{ movie.id }}" hx-target="#movie-list" hx-swap="innerHTML">{{ 'Unwatch' if movie.watched else 'Watch' }}</button>
+            <button hx-get="/edit/{{ movie.id }}" hx-target="#edit-form-{{ movie.id }}" hx-swap="outerHTML">Edit</button>
+            <button hx-post="/delete/{{ movie.id }}" hx-target="#movie-list" hx-swap="innerHTML">Delete</button>
+            <div id="edit-form-{{ movie.id }}"></div>
+        </li>
+    {% endfor %}
+</ul>

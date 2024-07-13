@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Movie Watchlist</h1>
+<form id="add-movie-form" hx-post="/add" hx-target="#movie-list" hx-swap="innerHTML">
+    <input type="text" name="title" placeholder="Add a new movie" required>
+    <button type="submit">Add</button>
+</form>
+<div id="movie-list">
+    {% include 'movie_list.html' %}
+</div>
+{% endblock %}
